@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C191953-6FDB-4A90-B1BC-729A4CBC3BA1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PimFrota</RootNamespace>
+    <AssemblyName>PimFrota</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo_syslog.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Correios.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Correios.CEP.Net.1.1.6\lib\Correios.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DocsBr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\docsbr.1.3.0\lib\net452\DocsBr.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Winforms.2010SP1Update.10.0.40219.329\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.15.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\WsCorreios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Base\BaseCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Base\BaseCadastro.Designer.cs">
+      <DependentUpon>BaseCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBase.Designer.cs">
+      <DependentUpon>FrmBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseEstoque.Designer.cs">
+      <DependentUpon>FrmBaseEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseFinanceiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseFinanceiro.Designer.cs">
+      <DependentUpon>FrmBaseFinanceiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseFundoCad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseFundoCad.Designer.cs">
+      <DependentUpon>FrmBaseFundoCad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseMensagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseMensagem.Designer.cs">
+      <DependentUpon>FrmBaseMensagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseViagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Base\FrmBaseViagem.Designer.cs">
+      <DependentUpon>FrmBaseViagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Login\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Login\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmMensagemCadSucesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmMensagemCadSucesso.Designer.cs">
+      <DependentUpon>FrmMensagemCadSucesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmMensagemCampoObrigatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmMensagemCampoObrigatorio.Designer.cs">
+      <DependentUpon>FrmMensagemCampoObrigatorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmMensagemErroCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmMensagemErroCadastro.Designer.cs">
+      <DependentUpon>FrmMensagemErroCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmMsgSimNao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmMsgSimNao.Designer.cs">
+      <DependentUpon>FrmMsgSimNao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmSairSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Mensagens\FrmSairSistema.Designer.cs">
+      <DependentUpon>FrmSairSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroCidade\FrmCadIniCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroCidade\FrmCadIniCidade.Designer.cs">
+      <DependentUpon>FrmCadIniCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroCliente\FrmCadIniCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroCliente\FrmCadIniCliente.Designer.cs">
+      <DependentUpon>FrmCadIniCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroMotorista\FrmCadiniMotorista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroMotorista\FrmCadiniMotorista.Designer.cs">
+      <DependentUpon>FrmCadiniMotorista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroMotorista\ServerValidateEventArgs.cs" />
+    <Compile Include="Formularios\TelaCadastros\CadastroProduto\FrmCadIniProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroProduto\FrmCadIniProduto.Designer.cs">
+      <DependentUpon>FrmCadIniProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroSeguro\FrmCadIniSeguro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroSeguro\FrmCadIniSeguro.Designer.cs">
+      <DependentUpon>FrmCadIniSeguro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroServico\FrmCadIniServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroServico\FrmCadIniServico.Designer.cs">
+      <DependentUpon>FrmCadIniServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroUsuario\FrmCadIniUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroUsuario\FrmCadIniUsuario.Designer.cs">
+      <DependentUpon>FrmCadIniUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroVeiculo\FrmCadIniVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaCadastros\CadastroVeiculo\FrmCadIniVeiculo.Designer.cs">
+      <DependentUpon>FrmCadIniVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaEstoque\FrmEstoqueProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaEstoque\FrmEstoqueProduto.Designer.cs">
+      <DependentUpon>FrmEstoqueProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaEstoque\FrmEstoqueServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaEstoque\FrmEstoqueServico.Designer.cs">
+      <DependentUpon>FrmEstoqueServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaFinanceiro\FrmFinanceiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaFinanceiro\FrmFinanceiro.Designer.cs">
+      <DependentUpon>FrmFinanceiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaHome\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaHome\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaViagem\Retorno Viagem\FrmCadIniRetornoViagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaViagem\Retorno Viagem\FrmCadIniRetornoViagem.Designer.cs">
+      <DependentUpon>FrmCadIniRetornoViagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaViagem\SaidaViagem\FrmCadIniSaidaViagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\TelaViagem\SaidaViagem\FrmCadIniSaidaViagem.Designer.cs">
+      <DependentUpon>FrmCadIniSaidaViagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relatorios\RptrRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\RptrRelatorio.Designer.cs">
+      <DependentUpon>RptrRelatorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sislogDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sislogDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sislogDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sislogDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="syslogDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>syslogDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Formularios\Base\BaseCadastro.resx">
+      <DependentUpon>BaseCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Base\FrmBase.resx">
+      <DependentUpon>FrmBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Base\FrmBaseEstoque.resx">
+      <DependentUpon>FrmBaseEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Base\FrmBaseFinanceiro.resx">
+      <DependentUpon>FrmBaseFinanceiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Base\FrmBaseFundoCad.resx">
+      <DependentUpon>FrmBaseFundoCad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Base\FrmBaseMensagem.resx">
+      <DependentUpon>FrmBaseMensagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Base\FrmBaseViagem.resx">
+      <DependentUpon>FrmBaseViagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Login\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Mensagens\FrmMensagemCadSucesso.resx">
+      <DependentUpon>FrmMensagemCadSucesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Mensagens\FrmMensagemCampoObrigatorio.resx">
+      <DependentUpon>FrmMensagemCampoObrigatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Mensagens\FrmMensagemErroCadastro.resx">
+      <DependentUpon>FrmMensagemErroCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Mensagens\FrmMsgSimNao.resx">
+      <DependentUpon>FrmMsgSimNao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Mensagens\FrmSairSistema.resx">
+      <DependentUpon>FrmSairSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaCadastros\CadastroCidade\FrmCadIniCidade.resx">
+      <DependentUpon>FrmCadIniCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaCadastros\CadastroCliente\FrmCadIniCliente.resx">
+      <DependentUpon>FrmCadIniCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaCadastros\CadastroMotorista\FrmCadiniMotorista.resx">
+      <DependentUpon>FrmCadiniMotorista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaCadastros\CadastroProduto\FrmCadIniProduto.resx">
+      <DependentUpon>FrmCadIniProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaCadastros\CadastroSeguro\FrmCadIniSeguro.resx">
+      <DependentUpon>FrmCadIniSeguro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaCadastros\CadastroServico\FrmCadIniServico.resx">
+      <DependentUpon>FrmCadIniServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaCadastros\CadastroUsuario\FrmCadIniUsuario.resx">
+      <DependentUpon>FrmCadIniUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaCadastros\CadastroVeiculo\FrmCadIniVeiculo.resx">
+      <DependentUpon>FrmCadIniVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaEstoque\FrmEstoqueProduto.resx">
+      <DependentUpon>FrmEstoqueProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaEstoque\FrmEstoqueServico.resx">
+      <DependentUpon>FrmEstoqueServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaFinanceiro\FrmFinanceiro.resx">
+      <DependentUpon>FrmFinanceiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaHome\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaViagem\Retorno Viagem\FrmCadIniRetornoViagem.resx">
+      <DependentUpon>FrmCadIniRetornoViagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaViagem\SaidaViagem\FrmCadIniSaidaViagem.resx">
+      <DependentUpon>FrmCadIniSaidaViagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Relatorios\RptrRelatorio.resx">
+      <DependentUpon>RptrRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Connected Services\WsCorreios\AtendeClienteService.wsdl" />
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.atualizaPagamentoNaEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.atualizaRemessaAgrupadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.bloquearObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaContratoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaDataAtualResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaPagamentoEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaServicosAdicionaisAtivosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaServicosValorDeclaradoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaServicosXServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.buscaTarifaValeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.calculaTarifaServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.cancelarObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.cancelarPedidoScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.clienteERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.consultaCEPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.consultaSROResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.consultaSRO_NEWResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.contratoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.embalagemLRSMaster.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.enderecoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.fechaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.fechaPlpVariosServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.geraDigitoVerificadorEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.getStatusCartaoPostagemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.getStatusPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.integrarUsuarioScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.obterClienteAtualizacaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.obterEmbalagemLRSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.retornoCancelamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.servicoAdicionalXML.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.servicoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.solicitaEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.solicitaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.solicitarPostagemScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.solicitaXmlPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.statusCartao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.statusPlp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.valePostal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.validaEtiquetaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.validaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.validarPostagemReversaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.validarPostagemSimultaneaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.verificaDisponibilidadeServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WsCorreios\PimFrota.WsCorreios.VerificaSeTodosObjetosCanceladosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\PimServices.Model.Viagem.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="sislogDataSet.xsc">
+      <DependentUpon>sislogDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sislogDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sislogDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sislogDataSet.xss">
+      <DependentUpon>sislogDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sislogDataSet1.xsc">
+      <DependentUpon>sislogDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="sislogDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sislogDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sislogDataSet1.xss">
+      <DependentUpon>sislogDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="syslogDataSet.xsc">
+      <DependentUpon>syslogDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="syslogDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>syslogDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="syslogDataSet.xss">
+      <DependentUpon>syslogDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PimServices\PimServices.csproj">
+      <Project>{98dbaa37-a792-4dad-b431-6b3f23fdce87}</Project>
+      <Name>PimServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WsCorreios\configuration91.svcinfo" />
+    <None Include="Connected Services\WsCorreios\configuration.svcinfo" />
+    <None Include="Connected Services\WsCorreios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="logo_syslog.ico" />
+    <None Include="Resources\PESQUISA.png" />
+    <Content Include="Syslog.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WsCorreios\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
